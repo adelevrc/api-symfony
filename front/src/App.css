@@ -1,0 +1,22 @@
+img {
+  max-width: 200px;
+  max-height: auto;
+  border-radius: 10px;
+}
+
+.container-all-animals{
+  display: grid; 
+  grid-template-columns: 40% 40%;
+  grid-template-rows: 50% 50%;
+}
+.container-one-animal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
+.h1-animal-blue{
+  font-size: 1em;
+  color: #1C9BD4;
+}
