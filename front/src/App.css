@@ -171,3 +171,14 @@ nav{
   align-items: center;
   margin: 1em;
 }
+
+.alice-carousel ul li {
+  height: 8em;
+  width:100%;
+  object-fit: cover;
+  /* margin: 0 0.2em 0 0.2em ; */
+}
+
+.carousel{
+  margin: 1em 0 1em 2em;
+}

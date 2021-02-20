@@ -4,6 +4,7 @@ import promotion from './img/promotion.svg';
 import planetearth from './img/planet-earth.svg'; 
 import lifesaver from './img/life-saver.svg'; 
 import SupportUs from './SupportUs'
+import AliceCarousel from './Carrousel'; 
 
 const LandingPage = () => {
     return (
@@ -53,6 +54,10 @@ const LandingPage = () => {
                     </p>
                 </div>
 
+            </div>
+
+            <div className="carousel">
+                <AliceCarousel />
             </div>
             <SupportUs />
         </div>
