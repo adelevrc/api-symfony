@@ -105,12 +105,23 @@ min-width: 8em;
 min-height: 2.5em ;
 color: white;
 font-weight: 600;
+cursor: pointer;
 }
 
-.green-small-btn{
+.green-small-btn, .green-large-btn{
   background-color: #28F7D2;
 }
 
+.green-large-btn{
+  min-width: 12em;
+  margin: 0 3em 0 0;
+}
+
+.div-see-animals-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
 /* //////////////////////////////////////////// SUPPORT US //////////////////////////////*/
 
 .support-us-div{
@@ -179,6 +190,6 @@ nav{
   /* margin: 0 0.2em 0 0.2em ; */
 }
 
-.carousel{
+.cdiv-carousel-component{
   margin: 1em 0 1em 2em;
 }

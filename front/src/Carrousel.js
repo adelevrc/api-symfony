@@ -3,6 +3,7 @@ import axios from 'axios'
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css';
+import { Link } from 'react-router-dom';
 
 
 export default class Carrousel extends Component {
@@ -47,6 +48,11 @@ export default class Carrousel extends Component {
         mouseTrackingEnabled={true}
         disableAutoPlayOnAction={true}
       />
+      <div className="div-see-animals-button">
+      <Link to={`/animals`}> 
+        <button className="link-to-btn green-large-btn">Voir tous les animaux</button>
+        </Link>
+      </div>
       </div>
     )
   }

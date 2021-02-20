@@ -56,10 +56,13 @@ const LandingPage = () => {
 
             </div>
 
-            <div className="carousel">
+            <div className="div-carousel-component">
                 <AliceCarousel />
             </div>
-            <SupportUs />
+
+        
+                <SupportUs />
+        
         </div>
     )
 }
