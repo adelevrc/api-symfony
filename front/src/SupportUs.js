@@ -6,7 +6,7 @@ const SupportUs = () => {
     return (
         <div className="support-us-div">
             <h3 className="h3-blue-bold h3-centered"> Nous soutenir </h3>
-            <p className="paragraph-description-white-centered">
+            <p className="paragraph-description-white-left">
                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
             </p>
 

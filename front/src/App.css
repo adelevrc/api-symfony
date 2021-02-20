@@ -4,6 +4,12 @@ img {
   border-radius: 5px;
 }
 
+.icone-item{
+  width: 5em;
+  height: 5em;
+  margin: 0 0 1em 0;
+}
+
 .h1-blue-centered-uppercase, .h1-blue-right-uppercase{
   text-transform: uppercase;
   font-size: 1.2em;
@@ -23,15 +29,6 @@ img {
   font-size: 1em;
   font-weight: 600;
   color: white;
-}
-
-
-nav{
-  display: grid;
-  grid-template-columns: 65% 20% 10%;
-  justify-items: start;
-  align-items: center;
-  color:white;
 }
 
 .h3-blue-bold{
@@ -74,7 +71,7 @@ nav{
    font-size: 1.3em;
  }
 
-.paragraph-description-white, .paragraph-description-white-centered{
+.paragraph-description-white, .paragraph-description-white-centered, .paragraph-description-white-left{
   color: white;
   font-size: 0.7em;
   font-weight: 300;
@@ -119,6 +116,7 @@ font-weight: 600;
 .support-us-div{
   display: flex;
   flex-direction: column;
+  margin: 1em;
 }
 
 .support-us-btn-div{
@@ -132,6 +130,9 @@ font-weight: 600;
   min-height: 3em;
 }
 
+
+/* ////////////////////////////////////////////  NAVBAR  //////////////////////////////*/
+
 .logo{
   max-width: 5em;
   max-height: 4em;
@@ -143,4 +144,30 @@ font-weight: 600;
   max-height: 2em;
   margin: 0.5em;
   border:none
+}
+
+nav{
+  display: grid;
+  grid-template-columns: 65% 20% 10%;
+  justify-items: start;
+  align-items: center;
+  color:white;
+}
+
+
+/* ////////////////////////////////////////////  LandingPage  //////////////////////////////*/
+
+.grid-items-actions{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  margin: 2em 1em 1em 1em;
+}
+
+.div-action{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
 }
