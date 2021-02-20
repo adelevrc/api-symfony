@@ -1,22 +1,146 @@
 img {
-  max-width: 200px;
-  max-height: auto;
-  border-radius: 10px;
+  width: 8.5em;
+  height: 8.7em;
+  border-radius: 5px;
 }
 
+.h1-blue-centered-uppercase, .h1-blue-right-uppercase{
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #1C9BD4;
+}
+
+.h1-blue-right-uppercase, .h2-white-right-uppercase {
+  margin: 1em;
+}
+.h1-blue-centered-uppercase{
+  text-align: center;
+  margin: 1em 0 2em 0;
+}
+.h2-white-right-uppercase{
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+}
+
+
+nav{
+  display: grid;
+  grid-template-columns: 65% 20% 10%;
+  justify-items: start;
+  align-items: center;
+  color:white;
+}
+
+.h3-blue-bold{
+  color:#1C9BD4 ;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1em;
+}
+.h3-centered{
+  text-align: center;
+}
+/* //////////////////////////////////////////// ANIMAL //////////////////////////////*/
+
 .container-all-animals{
-  display: grid; 
-  grid-template-columns: 40% 40%;
+  display: grid;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
+}
+
+.container-animals{
+  height: 100%;
+  margin: 1em 0 0 0;
 }
 .container-one-animal{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2em;
+  margin: 0 2em 2em 2em;
 }
-.h1-animal-blue{
+
+.h2-name-animal-blue{
   font-size: 1em;
   color: #1C9BD4;
+  margin: 1em 0 1em 0;
+  font-weight: 600;
+}
+
+ .h2-animal-bigger{
+   font-size: 1.3em;
+ }
+
+.paragraph-description-white, .paragraph-description-white-centered{
+  color: white;
+  font-size: 0.7em;
+  font-weight: 300;
+  line-height: 1.5em;
+  margin: 1em 0 0 0;
+}
+
+.paragraph-description-white-centered{
+  text-align: center;
+}
+
+.paragraph-landing-page{
+  width: 70%;
+  margin: 0 0 0 1.5em;
+}
+
+.presentation-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 2em 0 2em 0;
+}
+
+/* //////////////////////////////////////////// BUTTON //////////////////////////////*/
+
+button {
+  margin: 0.5em 0 0 0;
+border-radius: 15px;
+border: none;
+min-width: 8em;
+min-height: 2.5em ;
+color: white;
+font-weight: 600;
+}
+
+.green-small-btn{
+  background-color: #28F7D2;
+}
+
+/* //////////////////////////////////////////// SUPPORT US //////////////////////////////*/
+
+.support-us-div{
+  display: flex;
+  flex-direction: column;
+}
+
+.support-us-btn-div{
+  display: flex;
+  flex-direction: row;
+  margin: 1em 0 0 0;
+  justify-content: space-around;
+}
+.link-to-btn{
+  min-width: 12em;
+  min-height: 3em;
+}
+
+.logo{
+  max-width: 5em;
+  max-height: 4em;
+  margin: 0.5em;
+}
+
+.shopping-cart{
+  max-width: 2em;
+  max-height: 2em;
+  margin: 0.5em;
+  border:none
 }

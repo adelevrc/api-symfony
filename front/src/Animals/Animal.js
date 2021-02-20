@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import SupportUs from '../SupportUs'; 
 
 function AnimalDetail({ match }) {    
     useEffect(() => {
@@ -15,12 +16,17 @@ function AnimalDetail({ match }) {
     }
     
   return (
-    <div>
+    <div className="container-one-animal">
         
-        <h1> {animal.name} </h1>    
+        <h2 className="h2-name-animal-blue h2-animal-bigger"> {animal.name} </h2>    
         <img src={animal.photo} alt="description"/>
-        <p> {animal.description} </p>
-    
+
+        <div className="presentation-block">
+          <h3 className="h3-blue-bold"> Présentation </h3>
+          <p className="paragraph-description-white"> {animal.description} </p>
+        </div>
+
+        <SupportUs />
     </div>
   );
 }

@@ -21,8 +21,8 @@ function Animals() {
     // const showItems =  items.map((item) => <p> {items.name} </p>)
     
   return (
-    <div>
-        <h1> Nos rescapés </h1>
+    <div className="container-animals">
+        <h1 className="h1-blue-centered-uppercase"> Nos rescapés </h1>
         <div className="container-all-animals">
         {animals.map((animal) => (
         <div className="container-one-animal">
@@ -30,10 +30,10 @@ function Animals() {
                 <img src={animal.photo} alt="description" />
             </figure>
             
-            <h1 className="h1-animal-blue"> {animal.name} </h1> 
-        
+            <h2 className="h2-name-animal-blue"> {animal.name} </h2> 
+            
             <Link to={`/animals/${animal.id}`}>
-            <button> Voir </button>
+            <button className="green-small-btn"> Voir </button>
             </Link>
         </div>
         ))}        
