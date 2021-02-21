@@ -11,8 +11,8 @@ export class AddAnimal extends React.Component {
         isChecked: true,
       };
    
-    
     handleChange = (e) => {
+      
       this.setState({ 
         name: e.target.value,
         care: e.target.value,
@@ -20,6 +20,8 @@ export class AddAnimal extends React.Component {
         photo: e.target.value,
         isDead: e.target.value
        });
+       console.log(e.target.value); 
+
     }
   
     handleSubmit = (e) => {
@@ -75,12 +77,12 @@ export class AddAnimal extends React.Component {
 
           <div className="bloc-animal-form-label-input">
             <label htmlFor="description">Description</label>
-            <input id="description" name="description" type="textarea" placeholder="Entrez la description de l'animal" onChange={this.handleChange} />
+            <input id="description" name="description" type="text" placeholder="Entrez la description de l'animal" onChange={this.handleChange} />
           </div>
 
           <div className="bloc-animal-form-label-input">
             <label htmlFor="care">Soins à apporter / Remarques </label>
-            <input id="care" name="care" type="textarea" placeholder="Entrez les soins à apporter à l'animal" onChange={this.handleChange} />
+            <input id="care" name="care" type="text" placeholder="Entrez les soins à apporter à l'animal" onChange={this.handleChange} />
           </div>
 
           <div className="bloc-animal-checkbox-label-input">
