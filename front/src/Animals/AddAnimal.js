@@ -53,29 +53,53 @@ export class AddAnimal extends React.Component {
   
     render() {
       return (
+        <div>
+
+          <h1 className="h1-white-centered-uppercase"> 
+            Ajouter un animal 
+          </h1>
+          
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Nom</label>
-          <input id="name" name="name" type="text" onChange={this.handleChange} />
-  
-          <label htmlFor="description">Soin</label>
-          <input id="description" name="description" type="text" onChange={this.handleChange} />
-  
-          <label htmlFor="care">description</label>
-          <input id="care" name="care" type="text" onChange={this.handleChange} />
+          <div className="bloc-animal-form-label-input">
+            <label htmlFor="name">Nom</label>
+            <input id="name" name="name" type="text" placeholder="Entrez le nom de l'animal" onChange={this.handleChange} />
+          </div>
 
-          <label htmlFor="photo">photo</label>
-          <input id="photo" name="photo" type="text" onChange={this.handleChange} />
+          <div className="bloc-animal-form-label-input">
+            <label htmlFor="dateOfBirth">Date de naissance</label>
+            <input id="dateOfBirth" name="dateOfBirth" type="text" placeholder="JJ/MM/AA" onChange={this.handleChange} />
+          </div>
 
-          <label>
-              <input type="checkbox" name="isDead"
-              defaultChecked={this.state.isChecked}
-              onChange={this.toggleChange}
-              />
-              Check Me!
-          </label>
+          <div className="bloc-animal-form-label-input">
+            <label htmlFor="photo">Photo</label>
+            <input id="photo" name="photo" type="text" placeholder="Entrez le lien de la photo" onChange={this.handleChange} />
+          </div>
 
-          <button>Send data!</button>
+          <div className="bloc-animal-form-label-input">
+            <label htmlFor="description">Description</label>
+            <input id="description" name="description" type="textarea" placeholder="Entrez la description de l'animal" onChange={this.handleChange} />
+          </div>
+
+          <div className="bloc-animal-form-label-input">
+            <label htmlFor="care">Soins à apporter / Remarques </label>
+            <input id="care" name="care" type="textarea" placeholder="Entrez les soins à apporter à l'animal" onChange={this.handleChange} />
+          </div>
+
+          <div className="bloc-animal-checkbox-label-input">
+            <label>
+                <input id="checkbox-is-dead" type="checkbox" name="isDead"
+                defaultChecked={this.state.isChecked}
+                onChange={this.toggleChange}
+                />
+                Cochez si l'animal est décédé
+            </label>
+          </div>
+          <div className="div-btn-add-animal">
+            <button className="green-large-btn add-animal-btn">Ajouter un animal</button>
+          </div>
         </form>
+
+        </div>
       );
     }
   }

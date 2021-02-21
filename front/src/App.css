@@ -10,17 +10,25 @@ img {
   margin: 0 0 1em 0;
 }
 
-.h1-blue-centered-uppercase, .h1-blue-right-uppercase{
+.h1-blue-centered-uppercase, .h1-blue-right-uppercase, .h1-white-centered-uppercase{
   text-transform: uppercase;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+.h1-blue-centered-uppercase, .h1-blue-right-uppercase{
   color: #1C9BD4;
 }
+
+.h1-white-centered-uppercase{
+  color: white;
+}
+
 
 .h1-blue-right-uppercase, .h2-white-right-uppercase {
   margin: 1em;
 }
-.h1-blue-centered-uppercase{
+.h1-blue-centered-uppercase, .h1-white-centered-uppercase{
   text-align: center;
   margin: 1em 0 2em 0;
 }
@@ -122,6 +130,16 @@ cursor: pointer;
   flex-direction: row;
   justify-content: right;
 }
+
+.add-animal-btn{
+  margin: 1em;
+  padding: 1em;
+}
+
+.div-btn-add-animal{
+  display: flex;
+  justify-content: center;
+}
 /* //////////////////////////////////////////// SUPPORT US //////////////////////////////*/
 
 .support-us-div{
@@ -192,4 +210,48 @@ nav{
 
 .div-carousel-component{
   margin: 1em 0 1em 2em;
+}
+
+/* ////////////////////////////////////////////  FORMS  //////////////////////////////*/
+
+label{
+font-size: 0.8em;
+font-weight: 700;
+text-align: left;
+color: white;
+margin: 0 0 0.5em 0;
+}
+
+input{
+  border-radius: 5px;
+  border: none;
+  min-height: 3em;
+  padding: 1em;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 300;
+
+}
+
+.bloc-animal-form-label-input{
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+#care, #description {
+  min-height: 15em;
+}
+
+.bloc-animal-checkbox-label-input{
+  display: flex;
+  flex-direction: row;
+  min-width: 5em;
+  justify-content: center;
+  align-content: center;
+}
+
+#checkbox-is-dead{
+  margin: 1em;
+  min-height: 0em;
 }
