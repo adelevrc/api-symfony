@@ -34,10 +34,8 @@ export class AddAnimal extends React.Component {
       };  
       console.log(myForm); 
       console.log(JSON.stringify(myForm))
- 
-      const data = JSON.stringify(myForm);
-      
-      axios.post('https://127.0.0.1:8000/api/animal', {data} )
+
+      axios.post('https://127.0.0.1:8000/api/animal', myForm )
       .then(res => {
         console.log(res);
         console.log(res.data);

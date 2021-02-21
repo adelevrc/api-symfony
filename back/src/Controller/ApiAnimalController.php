@@ -62,17 +62,18 @@ class ApiAnimalController extends AbstractController
         $animal = new Animal();
         $form = $this->createForm(AnimalType::class, $animal);
 
+        $logger->info($request->getContent());
         $data = json_decode($request->getContent(), true);
         $form->submit($data);
 
-        $logger->info('I just got the logger');
-        $logger->info(print_r($data));
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $logger->info('Validated');
             $animal = $form->getData();
             $em->persist($animal);
             $em->flush();
         } else {
+            $logger->info('NOT validated');
             $errors = $this->getErrorsFromForm($form);
             $data = [
                 'type' => 'validation_error',
