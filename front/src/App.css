@@ -1,6 +1,8 @@
 img {
   width: 8.5em;
   height: 8.7em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
 }
 
@@ -61,8 +63,12 @@ img {
   margin: 1em 0 0 0;
 }
 .container-one-animal{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
   margin: 0 2em 2em 2em;
@@ -97,8 +103,12 @@ img {
 }
 
 .presentation-block{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   margin: 2em 0 2em 0;
 }
@@ -107,13 +117,15 @@ img {
 
 button {
   margin: 0.5em 0 0 0;
-border-radius: 15px;
-border: none;
-min-width: 8em;
-min-height: 2.5em ;
-color: white;
-font-weight: 600;
-cursor: pointer;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border: none;
+  min-width: 8em;
+  min-height: 2.5em ;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .green-small-btn, .green-large-btn{
@@ -126,9 +138,13 @@ cursor: pointer;
 }
 
 .div-see-animals-button{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 
 .add-animal-btn{
@@ -137,21 +153,31 @@ cursor: pointer;
 }
 
 .div-btn-add-animal{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 /* //////////////////////////////////////////// SUPPORT US //////////////////////////////*/
 
 .support-us-div{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   margin: 1em;
 }
 
 .support-us-btn-div{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: row;
   margin: 1em 0 0 0;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
 }
 .link-to-btn{
@@ -194,8 +220,12 @@ nav{
 }
 
 .div-action{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
   margin: 1em;
@@ -223,6 +253,8 @@ margin: 0 0 0.5em 0;
 }
 
 input{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
   border: none;
   min-height: 3em;
@@ -234,6 +266,8 @@ input{
 }
 
 .bloc-animal-form-label-input{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   margin: 1em;
@@ -244,9 +278,13 @@ input{
 }
 
 .bloc-animal-checkbox-label-input{
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: row;
   min-width: 5em;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
   align-content: center;
 }
