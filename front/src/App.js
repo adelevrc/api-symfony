@@ -19,7 +19,7 @@ function App() {
     <Route path="/animals"  exact component={Animals} /> 
     <Route path="/animals/:id"  component={AnimalDetail} /> 
     {/* <Route path="/create/animals"  component={AddAnimal} />  */}
-    <Route path="/create/animals"  component={Form} /> 
+    <Route path="/create/animal"  component={Form} /> 
   </Switch>
   
 </Router>
