@@ -86,7 +86,7 @@ console.log(formData);
           </label>
          </fieldset>
          <div className="div-btn-add-animal">
-          <button className="green-large-btn add-animal-btn" type="submit">Submit</button>
+          <button className="green-large-btn add-animal-btn" type="submit">Ajouter l'animal</button>
         </div>      
       </form>
     </div>

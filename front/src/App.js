@@ -1,11 +1,10 @@
 import React from 'react'; 
-import Form from './Animals/AddAnimal2'; 
+import Form from './Animals/AddAnimal'; 
 import './App.css';
 import Nav from './Nav';
 import LandingPage from './LandingPage'; 
 import Animals from './Animals/Animals'
 import AnimalDetail from './Animals/Animal'; 
-// import AddAnimal from './Animals/AddAnimal'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
