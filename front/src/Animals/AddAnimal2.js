@@ -39,9 +39,11 @@ console.log(formData);
 
   return(
     <div className="wrapper">
-      <h1>How About Them Apples</h1>
+      <h1 className="h1-white-centered-uppercase"> 
+            Ajouter un animal 
+          </h1>
       {submitting &&
-        <div> You are submitting the following:
+        <div> Vous envoyez les données suivantes:
         <ul>
           {Object.entries(formData).map(([name, value]) => (
             <li key={name}><strong>{name}</strong>:{value.toString()}</li>
@@ -49,31 +51,43 @@ console.log(formData);
         </ul></div>
       }
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset className="bloc-animal-form-label-input">
           <label>
-            <p>Name</p>
-            <input name="name" onChange={handleChange}/>
+            <p className="label-form">Nom</p>
+            <input id="name" type="text" name="name" placeholder="Entrez le nom de l'animal" onChange={handleChange}/>
           </label>
         </fieldset>
-        <fieldset>
+
+        <fieldset className="bloc-animal-form-label-input">
          <label>
-           <p>Apples</p>
-           <input name="care" onChange={handleChange}/>
-         </label>
+           <p className="label-form">Soins à apporter / remarques </p>
+           <input id="care" name="care" placeholder="Entrez les soins à apporter à l'animal" onChange={handleChange}/>
+          </label>
+        </fieldset>
+
+        <fieldset className="bloc-animal-form-label-input">
          <label>
-           <p>Count</p>
-           <input name="photo" onChange={handleChange} step="1"/>
+           <p className="label-form">Photo</p>
+           <input id="photo" name="photo" placeholder="Entrez le lien de la photo" onChange={handleChange} step="1"/>
          </label>
+        </fieldset>
+
+        <fieldset className="bloc-animal-form-label-input"> 
          <label>
-           <p>Count</p>
-           <input name="description" onChange={handleChange} step="1"/>
+           <p className="label-form">Description</p>
+           <input id="description" name="description" placeholder="Entrez la description de l'animal" onChange={handleChange} step="1"/>
          </label>
-         <label>
-           <p>Gift Wrap</p>
-           <input type="checkbox" name="isDead" onChange={handleChange} />
-         </label>
-       </fieldset>
-        <button type="submit">Submit</button>
+         </fieldset>
+        
+         <fieldset className="bloc-animal-form-label-input">
+          <label className="bloc-animal-checkbox-label-input">
+            <p className="question-checkbox-form">Est ce que l'animal est décédé ? </p>
+            <input id="checkbox-is-dead" type="checkbox" name="isDead" onChange={handleChange} />
+          </label>
+         </fieldset>
+         <div className="div-btn-add-animal">
+          <button className="green-large-btn add-animal-btn" type="submit">Submit</button>
+        </div>      
       </form>
     </div>
   )
