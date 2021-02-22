@@ -1,5 +1,5 @@
 import React from 'react'; 
-import Form from './Animals/AddAnimal'; 
+import AddAnimal from './Animals/AddAnimal'; 
 import './App.css';
 import Nav from './Nav';
 import LandingPage from './LandingPage'; 
@@ -18,8 +18,7 @@ function App() {
     <Route path="/" exact component={LandingPage} /> 
     <Route path="/animals"  exact component={Animals} /> 
     <Route path="/animals/:id"  component={AnimalDetail} /> 
-    {/* <Route path="/create/animals"  component={AddAnimal} />  */}
-    <Route path="/create/animal"  component={Form} /> 
+    <Route path="/create/animal"  component={AddAnimal} /> 
   </Switch>
   
 </Router>
