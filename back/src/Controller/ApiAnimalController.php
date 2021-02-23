@@ -4,19 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Form\AnimalType;
+use Psr\Log\LoggerInterface;
 use App\Repository\AnimalRepository;
 use Doctrine\DBAL\Types\BooleanType;
-use Psr\Log\LoggerInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
-// use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 
 class ApiAnimalController extends AbstractController
@@ -105,38 +107,111 @@ class ApiAnimalController extends AbstractController
 
     /** 
      * @Route("/api/animal/{id}", name= "api_animal_edit", methods={"PUT"})
+     * 
      */
 
-    public function editAnimal(int $id, AnimalRepository $animalRepository, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator)
+    public function updateAnimal(Animal $animal, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
     {
-        $animal = $animalRepository->find($id);
+        $data = json_decode($request->getContent(), true);
+        var_dump($data);
 
         if (!$animal) {
-            throw $this->createNotFoundException(
-                'No product found for id ' . $id
-            );
+            $animal = new Animal();
         }
 
-        $animal->setName('Pif le Cheval');
-        // $animal->setDateofBirth('');
-        $animal->setDescription('Parfait pour envahir Troie');
-        $animal->setCare('Ne surtout pas lui parler d\'Helene');
-        $animal->setPhoto('https://cdn.pixabay.com/photo/2013/07/13/14/00/rocker-161936_1280.png');
-        $animal->setisDead('false');
+        $form = $this->createForm(AnimalType::class, $animal);
+        $form->handleRequest($request);
 
-        $em->persist($animal);
-        $em->flush();
+        $logger->info($request->getContent());
+        $form->submit($data);
 
-        return $this->json([
-            'name' => $animal->getName(),
-            'dateOfBirth' => $animal->getDateOfBirth(),
-            'description' => $animal->getDescription(),
-            'care' => $animal->getCare(),
-            'photo' => $animal->getPhoto(),
-            'isDead' => $animal->getIsDead()
+        if ($form->isSubmitted() && $form->isValid()) {
+            $logger->info('Validated');
+            $animal = $form->getData();
+            var_dump($animal);
+            $em->persist($animal);
+            $em->flush();
+        } else {
+            $logger->info('NOT validated');
+            $errors = $this->getErrorsFromForm($form);
+            $data = [
+                'type' => 'validation_error',
+                'title' => 'There was a validation error',
+                'errors' => $errors
+            ];
+            return new JsonResponse($data, 400);
+        }
+        return new Response('OK', 200);
 
-        ]);
+
+
+
+        // try {
+        //     $animal = $animalRepository->find($id);
+
+        //     if (!$animal) {
+        //         $data = [
+        //             'status' => 404,
+        //             'errors' => "Post not found",
+        //         ];
+        //         return new JsonResponse($data, 400);
+        //     }
+
+        //     $request = $this->json($request);
+
+        //     if (!$request || !$request->request->get('name') || !$request->request->get('description')) {
+        //         throw new Exception;
+        //     }
+
+        //     $animal->setName($request->request->get('name'));
+        //     $animal->setDescription($request->request->get('description'));
+        //     $em->flush();
+
+        //     $data = [
+        //         'status' => 200,
+        //         'errors' => "Post updated successfully",
+        //     ];
+        //     return new JsonResponse($data, 200);
+        // } catch (Exception $e) {
+        //     $data = [
+        //         'status' => 422,
+        //         'errors' => "Data no valid",
+        //     ];
+        //     return new JsonResponse($data, 422);
+        // }
     }
+
+    // public function editAnimal(int $id, AnimalRepository $animalRepository, EntityManagerInterface $em, Request $request)
+    // {
+    //     $animal = $animalRepository->find($id);
+
+
+    //     if (!$animal) {
+    //         throw $this->createNotFoundException(
+    //             'No product found for id ' . $id
+    //         );
+    //     }
+
+    //     $animal->setName('Pif le Cheval');
+    //     // $animal->setDateofBirth('');
+    //     $animal->setDescription('Parfait pour envahir Troie');
+    //     $animal->setCare('Ne surtout pas lui parler d\'Helene');
+    //     $animal->setPhoto('https://cdn.pixabay.com/photo/2013/07/13/14/00/rocker-161936_1280.png');
+    //     $animal->setisDead('false');
+
+    //     $em->persist($animal);
+    //     $em->flush();
+
+    //     return $this->json([
+    //         'name' => $animal->getName(),
+    //         'dateOfBirth' => $animal->getDateOfBirth(),
+    //         'description' => $animal->getDescription(),
+    //         'care' => $animal->getCare(),
+    //         'photo' => $animal->getPhoto(),
+    //         'isDead' => $animal->getIsDead()
+
+    //     ]);
+    // }
 
 
     /** 
