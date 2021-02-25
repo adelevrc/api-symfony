@@ -1,10 +1,11 @@
 import React from 'react'; 
-import AddAnimal from './Animals/AddAnimal'; 
 import './App.css';
 import Nav from './Nav';
 import LandingPage from './LandingPage'; 
 import Animals from './Animals/Animals'
 import AnimalDetail from './Animals/Animal'; 
+import AddAnimal from './Animals/AddAnimal'; 
+import UpdateAnimal from './Animals/UpdateAnimal'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Route path="/animals"  exact component={Animals} /> 
     <Route path="/animals/:id"  component={AnimalDetail} /> 
     <Route path="/create/animal"  component={AddAnimal} /> 
+    <Route path="/update/animal/:id"  component={UpdateAnimal} /> 
   </Switch>
   
 </Router>

@@ -4,7 +4,7 @@ import SupportUs from '../SupportUs';
 function AnimalDetail({ match }) {    
     useEffect(() => {
         fetchAnimal();
-    },[])
+    })
 
     const [animal, setAnimal] = useState([]);
 

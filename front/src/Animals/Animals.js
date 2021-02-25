@@ -35,6 +35,7 @@ function Animals() {
             <Link to={`/animals/${animal.id}`}>
             <button className="green-small-btn"> Voir </button>
             </Link>
+
         </div>
         ))}        
         </div>

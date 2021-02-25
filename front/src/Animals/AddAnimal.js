@@ -1,5 +1,7 @@
 import React, { useReducer, useState } from 'react';
 import axios from 'axios'; 
+import { useHistory } from "react-router-dom";
+
 
 const formReducer = (state, event) => {
  return {
@@ -9,8 +11,11 @@ const formReducer = (state, event) => {
 }
 
 function Form() {
+
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
+
+  let history = useHistory();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -19,23 +24,24 @@ function Form() {
     setTimeout(() => {
       setSubmitting(false);
     }, 3000)
-
-console.log(formData); 
+    
+    console.log(formData); 
 
     axios.post('https://127.0.0.1:8000/api/animal', formData)
     .then(res => {
       console.log(res);
       console.log(res.data);
     })
+    history.push('/')
   }
 
   const handleChange = event => {
     const isCheckbox = event.target.type === 'checkbox';
     setFormData({
       name: event.target.name,
-      value: isCheckbox ? event.target.checked : event.target.value,    });
+      value: isCheckbox ? event.target.checked : event.target.value
+    })
   }
-
 
   return(
     <div className="wrapper">
@@ -61,7 +67,7 @@ console.log(formData);
         <fieldset className="bloc-animal-form-label-input">
          <label>
            <p className="label-form">Soins à apporter / remarques </p>
-           <input id="care" name="care" placeholder="Entrez les soins à apporter à l'animal" onChange={handleChange}/>
+           <textarea id="care" name="care" placeholder="Entrez les soins à apporter à l'animal" onChange={handleChange}/>
           </label>
         </fieldset>
 
@@ -75,7 +81,7 @@ console.log(formData);
         <fieldset className="bloc-animal-form-label-input"> 
          <label>
            <p className="label-form">Description</p>
-           <input id="description" name="description" placeholder="Entrez la description de l'animal" onChange={handleChange} step="1"/>
+           <textarea id="description" name="description" placeholder="Entrez la description de l'animal" onChange={handleChange} step="1"/>
          </label>
          </fieldset>
         

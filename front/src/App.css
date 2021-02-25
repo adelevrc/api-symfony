@@ -278,7 +278,7 @@ fieldset{
   min-height: 3em;
   padding: 1em;
   color: black;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 300;
 
 }
