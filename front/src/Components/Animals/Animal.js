@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import SupportUs from '../SupportUs'; 
+import SupportUs from '../../SupportUs'; 
 
 function AnimalDetail({ match }) {    
     useEffect(() => {

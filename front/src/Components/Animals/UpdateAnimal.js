@@ -1,7 +1,9 @@
 import React from 'react'; 
-import axios from 'axios'; 
+import axios from 'axios';
+
 
 export default class UpdateAnimal extends React.Component {
+
 
     state = {
       item: {
@@ -25,7 +27,6 @@ export default class UpdateAnimal extends React.Component {
       handleChange = e => {
           console.log("coucou handle change")
         e.persist();
-        // e.preventDefault(); 
         this.setState(animal => ({
           item: { ...animal.item,  
             [e.target.name]: e.target.value,  }, 
@@ -34,23 +35,19 @@ export default class UpdateAnimal extends React.Component {
         console.log(this.setState); 
       }
 
-      handleSubmit = item => {
+      handleSubmit = event => {
           console.log('hey handleSumbit !'); 
-
-        axios.put(`https://127.0.0.1:8000/api/animal/${this.props.match.params.id}`, item)
+          console.log(this.props.match.params.id);
+          console.log(this.state.item);
+          let data = this.state.item
+          delete data['id']
+          console.log('hey handleSumbit 2 !'); 
+        axios.put(`https://127.0.0.1:8000/api/animal/${this.props.match.params.id}`, data)
         .then(res => {
-          this.setState({
-              name: item.title, 
-              care: item.care,
-              description: item.description, 
-              photo: item.photo
-            });
-          console.log(item); 
-          console.log(res.data); 
+          console.log(res); 
+          console.log("DONE");
         })
         .catch(err => console.log(err));
-
-        JSON.stringify(item, UpdateAnimal())
       }
 
 

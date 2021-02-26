@@ -32,7 +32,7 @@ function Form() {
       console.log(res);
       console.log(res.data);
     })
-    history.push('/')
+    history.push('/animals')
   }
 
   const handleChange = event => {

@@ -2,52 +2,46 @@
 
 namespace App\Controller;
 
-use App\Entity\Animal;
-use App\Form\AnimalType;
+use App\Entity\Article;
+use App\Form\ArticleType;
 use Psr\Log\LoggerInterface;
-use App\Repository\AnimalRepository;
-use Doctrine\DBAL\Types\BooleanType;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
-
-class ApiAnimalController extends AbstractController
+class ApiProductController extends AbstractController
 {
     /** 
-     * @Route("/api/animal", name= "api_animal_get", methods={"GET"})
+     * @Route("/api/article", name= "api_article_get", methods={"GET"})
      */
-    public function getAnimals(AnimalRepository $animalRepository): Response
-    {
 
-        return $this->json($animalRepository->findAll(), 200, []);
+    public function getArticle(ArticleRepository $articleRepository): Response
+    {
+        return $this->json($articleRepository->findAll(), 200, []);
     }
 
     /** 
-     * @Route("/api/animal/{id}", name= "api_animal_get_by_id", methods={"GET"})
+     * @Route("/api/article/{id}", name= "api_article_get_by_id", methods={"GET"})
      */
-    public function getOneAnimal(int $id, AnimalRepository $animalRepository): Response
+
+    public function getOneArticle(int $id, ArticleRepository $articleRepository): Response
     {
-        return $this->json($animalRepository->find($id), 200, []);
+        return $this->json($articleRepository->find($id), 200, []);
     }
 
     /** 
-     * @Route("/api/animal", name= "api_animal_post", methods={"POST"})
+     * @Route("/api/article", name= "api_article_post", methods={"POST"})
      */
 
     public function postAnimal(Request $request, LoggerInterface $logger, EntityManagerInterface $em)
     {
-        $animal = new Animal();
-        $form = $this->createForm(AnimalType::class, $animal);
+        $animal = new Article();
+        $form = $this->createForm(ArticleType::class, $animal);
 
         //$logger->info($request->getContent());
         $data = json_decode($request->getContent(), true);
@@ -94,22 +88,20 @@ class ApiAnimalController extends AbstractController
         return $errors;
     }
 
-
     /** 
-     * @Route("/api/animal/{id}", name= "api_animal_edit", methods={"PUT"})
+     * @Route("/api/article/{id}", name= "api_article_edit", methods={"PUT"})
      */
-
-    public function updateAnimal(Animal $animal, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
+    public function updateArticle(Article $article, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
     {
         $logger->info('IM HERE');
         $data = json_decode($request->getContent(), true);
         var_dump($data);
 
-        if (!$animal) {
-            $animal = new Animal();
+        if (!$article) {
+            $article = new Article();
         }
 
-        $form = $this->createForm(AnimalType::class, $animal);
+        $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         $logger->info($request->getContent());
@@ -135,27 +127,5 @@ class ApiAnimalController extends AbstractController
             return new JsonResponse($data, 400);
         }
         return new JsonResponse('OK', 200);
-    }
-
-    /** 
-     * @Route("/api/animal/{id}", name= "api_animal_delete", methods={"DELETE"})
-     */
-
-    public function deleteAnimal(int $id, EntityManagerInterface $em)
-    {
-        $animal = $em->getRepository(Animal::class)->find($id);
-
-        if (!$animal) {
-            throw $this->createNotFoundException(
-                'Pas d\'animal connu avec l\'id ' . $id
-            );
-        }
-
-        $em->remove($animal);
-        $em->flush();
-
-        // return $this->json($animal, 204, []);
-
-        return new Response(null, 204);
     }
 }
