@@ -12,10 +12,14 @@ img {
   margin: 0 0 1em 0;
 }
 
-.h1-blue-centered-uppercase, .h1-blue-right-uppercase, .h1-white-centered-uppercase{
+.h1-blue-centered-uppercase, .h1-blue-right-uppercase, .h1-white-centered-uppercase, .h1-green-centered-uppercase{
   text-transform: uppercase;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+.h1-green-centered-uppercase{
+color: #28F7D2; 
 }
 
 .h1-blue-centered-uppercase, .h1-blue-right-uppercase{
@@ -30,7 +34,7 @@ img {
 .h1-blue-right-uppercase, .h2-white-right-uppercase {
   margin: 1em;
 }
-.h1-blue-centered-uppercase, .h1-white-centered-uppercase{
+.h1-blue-centered-uppercase, .h1-white-centered-uppercase, .h1-green-centered-uppercase{
   text-align: center;
   margin: 1em 0 2em 0;
 }
@@ -47,6 +51,8 @@ img {
   text-align: left;
   font-size: 1em;
 }
+
+
 .h3-centered{
   text-align: center;
 }
@@ -62,6 +68,7 @@ img {
   height: 100%;
   margin: 1em 0 0 0;
 }
+
 .container-one-animal{
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -76,14 +83,45 @@ img {
 
 .h2-name-animal-blue{
   font-size: 1em;
-  color: #1C9BD4;
   margin: 1em 0 1em 0;
   font-weight: 600;
 }
+.h2-name-article-green{
+  font-size: 1em;
+  color: #28F7D2;
+  font-weight: 600;
+  margin: 1em 0 1em 0;
+}
+.h2-name-animal-blue{
+  color: #1C9BD4;
+}
+
 
  .h2-animal-bigger{
    font-size: 1.3em;
  }
+
+
+/* //////////////////////////////////////////// ARTICLES //////////////////////////////*/
+
+ .container-one-article{
+   display:flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+ }
+
+ .container-img-title-article{
+   display: flex;
+   flex-direction: column;
+ }
+
+ .img-article-presentation{
+   height: 13em;
+   width: 13em;
+   margin: 0 0 1em 0;
+ }
+
 
 .paragraph-description-white, .paragraph-description-white-centered, .paragraph-description-white-left{
   color: white;
@@ -97,11 +135,24 @@ img {
   text-align: center;
 }
 
+.paragraph-description-white-left-margin{
+  color: white;
+  font-size: 0.7em;
+  font-weight: 300;
+  line-height: 1.5em;
+  margin: 0.5em;
+}
+
 .paragraph-landing-page{
   width: 70%;
   margin: 0 0 0 1.5em;
 }
 
+.h3-price-article{
+  color: #28F7D2;
+  text-align: center;
+  margin: 0 0 1em 0;
+}
 .presentation-block{
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -113,6 +164,9 @@ img {
   margin: 2em 0 2em 0;
 }
 
+.article-presentation-block{
+  margin: 1em;
+}
 /* //////////////////////////////////////////// BUTTON //////////////////////////////*/
 
 button {
@@ -130,6 +184,10 @@ button {
 
 .green-small-btn, .green-large-btn{
   background-color: #28F7D2;
+}
+
+.blue-small-btn{
+  background-color: #2ACEEB;
 }
 
 .green-large-btn{

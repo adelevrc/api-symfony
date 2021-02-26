@@ -17,9 +17,11 @@ function AnimalDetail({ match }) {
     
   return (
     <div className="container-one-animal">
-        
+
+      
         <h2 className="h2-name-animal-blue h2-animal-bigger"> {animal.name} </h2>    
         <img src={animal.photo} alt="description"/>
+  
 
         <div className="presentation-block">
           <h3 className="h3-blue-bold"> Présentation </h3>
