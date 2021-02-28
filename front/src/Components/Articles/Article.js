@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Counter from './Counter'; 
 
 function Article({ match }) {    
     useEffect(() => {
@@ -24,7 +25,7 @@ function Article({ match }) {
           <h3 className="h3-price-article"> {article.price} € </h3>
           <p className="paragraph-description-white-left-margin"> {article.description} </p>
         </div>
-
+        <Counter />
     </div>
   );
 }

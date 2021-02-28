@@ -370,3 +370,26 @@ fieldset{
 #checkbox-is-dead{
   margin-left: 1em;
 }
+
+.count-input{
+  text-align: center;
+  margin: 0 1em 0 1em;
+  line-height: 2em;
+  width: 5em;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.container-count{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.button-counter{
+  min-width: 2em;
+  min-height: 2em;
+  background-color: #2ACEEB;
+}
