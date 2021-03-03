@@ -128,4 +128,26 @@ class ApiProductController extends AbstractController
         }
         return new JsonResponse('OK', 200);
     }
+
+    /** 
+     * @Route("/api/product/{id}", name= "api_product_delete", methods={"DELETE"})
+     */
+
+    public function deleteArticle(int $id, EntityManagerInterface $em)
+    {
+        $article = $em->getRepository(Article::class)->find($id);
+
+        if (!$article) {
+            throw $this->createNotFoundException(
+                'Pas de produit connu avec l\'id ' . $id
+            );
+        }
+
+        $em->remove($article);
+        $em->flush();
+
+        // return $this->json($animal, 204, []);
+
+        return new Response(null, 204);
+    }
 }
