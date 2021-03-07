@@ -15,10 +15,8 @@ function Animals() {
         const animals = await data.json();
         console.log(animals)
         setAnimals(animals)
-        // console.log(items[0].title)
     }
 
-    // const showItems =  items.map((item) => <p> {items.name} </p>)
     
   return (
     <div className="container-animals">
