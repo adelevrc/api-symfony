@@ -2,22 +2,23 @@ import React from 'react';
 import axios from 'axios';
 
 
-export default class UpdateAnimal extends React.Component {
+export default class UpdateArticle extends React.Component {
 
 
     state = {
       item: {
         name: '',
+        category: '',
         description: '',
-        care: '',
-        photo: '', 
-        isDead : false, 
+        image: '', 
+        price: '',
+        inStock: true, 
       }
     }
 
     componentDidMount = () => {
         console.log('coucou axios get')
-        axios.get(`https://127.0.0.1:8000/api/animal/${this.props.match.params.id}`)
+        axios.get(`https://127.0.0.1:8000/api/article/${this.props.match.params.id}`)
           .then(res => {
             this.setState({item: res.data});
           })
@@ -27,8 +28,8 @@ export default class UpdateAnimal extends React.Component {
       handleChange = e => {
           console.log("coucou handle change")
         e.persist();
-        this.setState(animal => ({
-          item: { ...animal.item,  
+        this.setState(article => ({
+          item: { ...article.item,  
             [e.target.name]: e.target.value,  }, 
         })
         )
@@ -37,12 +38,10 @@ export default class UpdateAnimal extends React.Component {
 
       handleSubmit = event => {
           console.log('hey handleSumbit !'); 
-          console.log(this.props.match.params.id);
-          console.log(this.state.item);
           let data = this.state.item
           delete data['id']
           console.log('hey handleSumbit 2 !'); 
-        axios.put(`https://127.0.0.1:8000/api/animal/${this.props.match.params.id}`, data)
+        axios.put(`https://127.0.0.1:8000/api/article/${this.props.match.params.id}`, data)
         .then(res => {
           console.log(res); 
           console.log("DONE");
@@ -50,47 +49,54 @@ export default class UpdateAnimal extends React.Component {
         .catch(err => console.log(err));
       }
 
+
       render() {
           return(
           
             <form onSubmit={this.handleSubmit}>
                 <fieldset className="bloc-animal-form-label-input">
                 <label>
-                    <p className="label-form">Nom</p>
+                    <p className="label-form">Nom du produit</p>
                     <input id="name" type="text" name="name" value={this.state.item.name} onChange={this.handleChange}/>
                 </label>
                 </fieldset>
 
                 <fieldset className="bloc-animal-form-label-input">
                 <label>
-                <p className="label-form">Soins à apporter / remarques </p>
-                <textarea id="care" name="care" value={this.state.item.care} onChange={this.handleChange}/>
+                <p className="label-form"> Catégorie </p>
+                <textarea id="category" name="category" value={this.state.item.category} onChange={this.handleChange}/>
                 </label>
                 </fieldset>
 
                 <fieldset className="bloc-animal-form-label-input">
                 <label>
-                <p className="label-form">Photo</p>
-                <input id="photo" name="photo" value={this.state.item.photo} onChange={this.handleChange} step="1"/>
+                <p className="label-form">Description</p>
+                <input id="description" name="description" value={this.state.item.description} onChange={this.handleChange} step="1"/>
                 </label>
                 </fieldset>
 
                 <fieldset className="bloc-animal-form-label-input"> 
                 <label>
-                <p className="label-form">Description</p>
-                <textarea id="description" name="description" value={this.state.item.description} onChange={this.handleChange} step="1"/>
+                <p className="label-form">Photo</p>
+                <textarea id="image" name="image" value={this.state.item.image} onChange={this.handleChange} step="1"/>
+                </label>
+                </fieldset>
+
+                <fieldset className="bloc-animal-form-label-input"> 
+                <label>
+                <p className="label-form">Prix</p>
+                <textarea id="price" name="price" value={this.state.item.price} onChange={this.handleChange} step="1"/>
                 </label>
                 </fieldset>
                 
                 <fieldset className="bloc-animal-form-label-input">
                 <label className="bloc-animal-checkbox-label-input">
-                    <p className="question-checkbox-form">Est ce que l'animal est décédé ? </p>
+                    <p className="question-checkbox-form">Est ce que cet article est en stock ?  </p>
                     <input id="checkbox-is-dead" type="checkbox" name="isDead" value={this.state.item.name} onChange={this.handleChange} />
                 </label>
                 </fieldset>
                 <div className="div-btn-add-animal">
-
-                <button className="green-large-btn add-animal-btn" type="submit">Ajouter l'animal</button>
+                <button onClick={this.handleSubmit}className="green-large-btn add-animal-btn" type="submit">Ajouter l'animal</button>
                 </div>      
         </form>
 
