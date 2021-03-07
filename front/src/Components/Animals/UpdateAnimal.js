@@ -50,7 +50,6 @@ export default class UpdateAnimal extends React.Component {
         .catch(err => console.log(err));
       }
 
-
       render() {
           return(
           
@@ -90,7 +89,7 @@ export default class UpdateAnimal extends React.Component {
                 </label>
                 </fieldset>
                 <div className="div-btn-add-animal">
-                <button onClick={() => {console.log('hey')}}className="green-large-btn add-animal-btn" type="submit">Ajouter l'animal</button>
+                <button className="green-large-btn add-animal-btn" type="submit">Ajouter l'animal</button>
                 </div>      
         </form>
 
