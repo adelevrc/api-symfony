@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import Counter from './Counter'; 
 
 function Article({ match }) {    
@@ -15,6 +16,13 @@ function Article({ match }) {
         console.log(animal);
     }
     
+
+    const deleteHandler = ({ match })  => {
+
+      fetch(`https://127.0.0.1:8000/api/article/${match.params.id}`, { method: 'DELETE' })
+          .then(() => this.setState({ status: 'Delete successful' }));
+}
+
   return (
     <div className="container-one-article">
         
@@ -26,6 +34,14 @@ function Article({ match }) {
           <p className="paragraph-description-white-left-margin"> {article.description} </p>
         </div>
         <Counter />
+
+        <Link to={`/update/articles/${article.id}`}>
+          <button className="blue-small-btn"> Modifier </button>
+        </Link>
+
+        <button className="blue-small-btn" onClick={deleteHandler}> Supprimer </button>
+       
+
     </div>
   );
 }
