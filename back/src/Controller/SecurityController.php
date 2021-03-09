@@ -27,7 +27,7 @@ class SecurityController extends AbstractController
         $email = $data["email"];
         $password = $data["password"];
         $user = $userRepository->findOneBy([
-            'email'=>$email,
+            'email' => $email,
         ]);
         if (!$user || !$encoder->isPasswordValid($user, $password)) {
             return $this->json([

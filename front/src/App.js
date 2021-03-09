@@ -28,7 +28,7 @@ function App() {
     <Route path="/update/animal/:id"  component={UpdateAnimal} /> 
     <Route path="/articles"  exact component={Articles} />
     <Route path="/articles/:id"  component={Article} /> 
-    <Route path="/update/articles/:id"  component={UpdateArticle} /> 
+    {/* <Route path="/update/articles/:id"  component={UpdateArticle} />  */}
 
 
   </Switch>

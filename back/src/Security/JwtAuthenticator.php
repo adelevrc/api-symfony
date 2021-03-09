@@ -2,17 +2,19 @@
 
 
 namespace App\Security;
+
+use App\Entity\User;
+use Firebase\JWT\JWT;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
-use Firebase\JWT\JWT;
-use App\Entity\User;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class JwtAuthenticator extends AbstractGuardAuthenticator
 {
@@ -56,14 +58,13 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
                 ->findOneBy([
                     'email' => $jwt['user'],
                 ]);
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             throw new AuthenticationException($exception->getMessage());
         }
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
