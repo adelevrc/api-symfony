@@ -65,6 +65,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
