@@ -2,56 +2,55 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Form\ArticleType;
+use App\Entity\User;
+use App\Form\UserType;
 use Psr\Log\LoggerInterface;
-use App\Repository\ArticleRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\Form\FormInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ApiProductController extends AbstractController
+class UserController extends AbstractController
 {
     /** 
-     * @Route("/api/article", name= "api_article_get", methods={"GET"})
+     * @Route("/api/user", name= "api_user_get", methods={"GET"})
      */
 
-    public function getArticle(ArticleRepository $articleRepository): Response
+    public function getUsers(UserRepository $userRepository): Response
     {
-        return $this->json($articleRepository->findAll(), 200, []);
+        return $this->json($userRepository->findAll(), 200, []);
     }
 
     /** 
-     * @Route("/api/article/{id}", name= "api_article_get_by_id", methods={"GET"})
+     * @Route("/api/user/{id}", name= "api_user_get_by_id", methods={"GET"})
      */
-
-    public function getOneArticle(int $id, ArticleRepository $articleRepository): Response
+    public function getOneUser(int $id, UserRepository $userRepository): Response
     {
-        return $this->json($articleRepository->find($id), 200, []);
+        return $this->json($userRepository->find($id), 200, []);
     }
 
     /** 
-     * @Route("/api/article", name= "api_article_post", methods={"POST"})
+     * @Route("/api/user", name= "api_user_post", methods={"POST"})
      */
 
-    public function postAnimal(Request $request, LoggerInterface $logger, EntityManagerInterface $em)
+    public function postUser(Request $request, LoggerInterface $logger, EntityManagerInterface $em)
     {
-        $animal = new Article();
-        $form = $this->createForm(ArticleType::class, $animal);
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
 
-        //$logger->info($request->getContent());
+
         $data = json_decode($request->getContent(), true);
         $form->submit($data);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $logger->info('Validated');
-            $animal = $form->getData();
-            $em->persist($animal);
+            $user = $form->getData();
+            $em->persist($user);
             $em->flush();
         } else {
             $logger->info('NOT validated');
@@ -69,7 +68,7 @@ class ApiProductController extends AbstractController
             return new JsonResponse($data, 400);
         }
 
-        return new JsonResponse('Saved new product with id ' . $animal->getId(), 200);
+        return new JsonResponse('Saved new user with id ' . $user->getId(), 200);
     }
 
     private function getErrorsFromForm(FormInterface $form)
@@ -89,19 +88,19 @@ class ApiProductController extends AbstractController
     }
 
     /** 
-     * @Route("/api/article/{id}", name= "api_article_edit", methods={"PUT"})
+     * @Route("/api/user/{id}", name= "api_user_edit", methods={"PUT"})
      */
-    public function updateArticle(Article $article, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
+    public function updateUser(User $user, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
     {
         $logger->info('IM HERE');
         $data = json_decode($request->getContent(), true);
         var_dump($data);
 
-        if (!$article) {
-            $article = new Article();
+        if (!$user) {
+            $user = new User();
         }
 
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         $logger->info($request->getContent());
@@ -109,9 +108,9 @@ class ApiProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $logger->info('Validated');
-            $animal = $form->getData();
-            var_dump($animal);
-            $em->persist($animal);
+            $user = $form->getData();
+            var_dump($user);
+            $em->persist($user);
             $em->flush();
         } else {
             $logger->info('NOT validated');
@@ -130,20 +129,20 @@ class ApiProductController extends AbstractController
     }
 
     /** 
-     * @Route("/api/product/{id}", name= "api_product_delete", methods={"DELETE"})
+     * @Route("/api/user/{id}", name= "api_user_delete", methods={"DELETE"})
      */
 
-    public function deleteArticle(int $id, EntityManagerInterface $em)
+    public function deleteUser(int $id, EntityManagerInterface $em)
     {
-        $article = $em->getRepository(Article::class)->find($id);
+        $user = $em->getRepository(User::class)->find($id);
 
-        if (!$article) {
+        if (!$user) {
             throw $this->createNotFoundException(
-                'Pas de produit connu avec l\'id ' . $id
+                'Pas d\’utilisateur connu avec l\'id ' . $id
             );
         }
 
-        $em->remove($article);
+        $em->remove($user);
         $em->flush();
 
         // return $this->json($animal, 204, []);

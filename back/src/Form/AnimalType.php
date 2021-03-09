@@ -17,14 +17,14 @@ class AnimalType extends AbstractType
             ->add('description')
             ->add('care')
             ->add('photo')
-            ->add('isDead')
-        ;
+            ->add('isDead');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Animal::class,
+            'data_class' => Article::class,
+            'csrf_protection' => false,
         ]);
     }
 }

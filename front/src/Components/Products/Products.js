@@ -28,6 +28,7 @@ function Articles() {
             </figure>
             
             <h2 className="h2-name-article-green"> {article.name} </h2> 
+            <h4> {article.price} €  </h4>
             
             <Link to={`/articles/${article.id}`}>
             <button className="blue-small-btn"> Voir </button>

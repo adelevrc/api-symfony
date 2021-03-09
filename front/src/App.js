@@ -7,9 +7,8 @@ import Animals from './Components/Animals/Animals';
 import AnimalDetail from './Components/Animals/Animal'; 
 import AddAnimal from './Components/Animals/AddAnimal'; 
 import UpdateAnimal from './Components/Animals/UpdateAnimal'; 
-import Articles from './Components/Articles/Articles'; 
-import Article from './Components/Articles/Article'; 
-import UpdateArticle from './Components/Articles/UpdateArticle'; 
+import Articles from './Components/Products/Products'; 
+import Article from './Components/Products/Product'; 
 
 
 
