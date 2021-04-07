@@ -14,7 +14,7 @@ security:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
     main:
-      pattern: ^/api
+      pattern: ^/api/test
       guard:
         authenticators:
           - App\Security\JwtAuthenticator

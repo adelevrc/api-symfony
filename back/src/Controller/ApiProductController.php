@@ -91,6 +91,7 @@ class ApiProductController extends AbstractController
     /** 
      * @Route("/api/article/{id}", name= "api_article_edit", methods={"PUT"})
      */
+
     public function updateArticle(Article $article, Request $request, EntityManagerInterface $em, LoggerInterface $logger)
     {
         $logger->info('IM HERE');
