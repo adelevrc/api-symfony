@@ -1,2 +1,2 @@
-# projet-pro-ecommerce
+# Symfony API for a fake e-commerce app 
  
